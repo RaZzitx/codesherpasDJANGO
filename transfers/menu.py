@@ -6,9 +6,6 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "codesherpas.settings")
 import django
 django.setup()
 
-from django.core.management import call_command
-
-from transfers.models import Account
 import requests
 def iban_check(iban):
     # Remove spaces and to upper case
@@ -58,7 +55,7 @@ def check_account(iban):
         elif response.status_code == 404:
             # Return the created account
             print("Couldn't find the account. Creating it...")
-            #CREATES DE ACCOUNT
+            # CREATES THE ACCOUNT
             createResp = create_account(iban)
             return createResp
         else:
@@ -180,11 +177,9 @@ def fetch_transactions(iban):
     # Send the POST request
     try:
         response = requests.post(url, json=payload)
-        #print(f"RESPONSE FETCH TRASN: {response.json()}")
         # Check if the request was successful
         if response.status_code == 200:
             data = response.json()
-            #transactions = data.get('transactions', [])
 
             # Print or process the transaction details
             '''for transaction in transactions:
@@ -285,7 +280,6 @@ def show_menu():
 
                 # RETURNS A JSON WITH THE RESPONSE
                 resp = check_account(iban)
-                # print(f"RESPONNSE ACCOUNT: {resp}")
 
                 if resp.get('status') == 201:
 
@@ -339,7 +333,6 @@ def show_menu():
                                 IBANToTransfer = IBANToTransfer.replace(' ', '').upper()
                                 resp = check_account(IBANToTransfer)
 
-                                #print(f"RESPONNSE TRANSFER: {resp}")
 
                                 if resp.get('status') == 201:
                                     if IBANToTransfer != iban:

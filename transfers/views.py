@@ -269,52 +269,6 @@ def transfer(request):
             'status': 500
         }, status=500)
 
-'''@csrf_exempt
-@require_POST
-def get_transactions(request):
-    try:
-        # Parse the request body to get the IBAN
-        data = json.loads(request.body)
-        iban = data.get('iban')
-
-        # Try to get the account by IBAN
-        account = Account.objects.get(iban=iban)
-
-        transactions = account.trasaction_set.all()
-
-        # Prepare the transactions data to be returned in the response
-        transactions_data = [
-            {
-                'id': transaction.id,
-                'date': transaction.date,
-                'amount': transaction.amount,
-                'balance': transaction.balance,
-                'type': transaction.type,
-            }
-            for transaction in transactions
-        ]
-
-        # Return the transactions data in the response
-        return JsonResponse({
-            'transactions': transactions_data,
-            'status': 200
-        }, status=200)
-
-    except Account.DoesNotExist:
-        # If the account doesn't exist, return a 404 error
-        return JsonResponse({
-            'error': 'Account not found',
-            'status': 404
-        }, status=404)
-
-    except Exception as e:
-        # Handle any other unexpected errors
-        return JsonResponse({
-            'error': f'An unexpected error occurred: {str(e)}',
-            'status': 500
-        }, status=500)'''
-
-
 @csrf_exempt
 @require_POST
 def get_transactions(request):
