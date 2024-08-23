@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+
 class Account(models.Model):
     iban = models.CharField(max_length=24, unique=True)
     balance = models.FloatField(default=0.0)

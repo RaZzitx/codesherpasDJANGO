@@ -181,7 +181,7 @@ def fetch_transactions(iban):
         if response.status_code == 200:
             data = response.json()
 
-            # Print or process the transaction details
+            # Uncomment to Print or process the transaction details
             '''for transaction in transactions:
                 print(f"Transaction ID: {transaction['id']}")
                 print(f"Date: {transaction['date']}")
@@ -251,6 +251,9 @@ def fetch_filtered_transactions(iban, start_date=None, end_date=None, transactio
         data = response.json()
         # Check if the request was successful
         if response.status_code == 200:
+
+            # Uncomment to Print or process the transaction details
+
             '''transactions = data.get('transactions', [])
             for transaction in transactions:
                 print(f"Transaction ID: {transaction['id']}")
