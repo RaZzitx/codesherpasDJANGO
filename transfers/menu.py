@@ -222,11 +222,14 @@ def get_user_input():
     start_date = input("Introduce the start date (YYYY-MM-DD) or press enter in case you don't want: ").strip()
     if start_date == "" or not is_valid_date(start_date):
         start_date = None
+        print("Invalid date format. No start date added")
 
     # Ask for end  date
     end_date = input("Introduce the end date (YYYY-MM-DD) or press enter in case you don't want: ").strip()
     if end_date == "" or not is_valid_date(end_date):
         end_date = None
+        print("Invalid date format. No end date added")
+
     print("TRANSACTION TYPE: ", transaction_type)
     return transaction_type, start_date, end_date
 
